@@ -1,27 +1,30 @@
 <?php
 error_reporting(0);
-$keyword = json_decode($do_POST['query']);
-$lat = json_decode($do_POST['current_lat']);
-$lng = json_decode($so_POST['current_lng']);
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: X-Requested-With");
+$keyword = json_decode($_POST['query']);
+$lat = json_decode($_POST['current_lat']);
+$lng = json_decode($_POST['current_lng']);
 
 $token_url = "https://outpost.mapmyindia.com/api/security/oauth/token?grant_type=client_credentials";
 
 $access_token="";
 $token_type="";
 
-// $curl_token = curl_init();
-// curl_setopt($curl_token, CURLOPT_URL, $token_url);
-// curl_setopt($curl_token, CURLOPT_POST, 1);
-// curl_setopt($curl_token, CURLOPT_RETURNTRANSFER, 1);
-// curl_setopt($curl_token, CURLOPT_SSL_VERIFYHOST, 0);
-// curl_setopt($curl_token, CURLOPT_SSL_VERIFYPEER, 0);
-// curl_setopt($curl_token, CURLOPT_POSTFIELDS,
-//             "client_id=R1COQ57r0_UddN-80_NLFt89BHEFeX7cTXmwVG2tdiT06OyXbOqgukHFpt3xfxOm-tpo5Y6JKN431cJTLTE6Zw==&client_secret=9K_q_9Q2GHMAbyNdcof10gRcszQGZcpOfzv62cEwJ_Pqpd-_GsP_53Qy-hi6k1x-3RJohmyoMwOOZ0mR9Hh6KYmU695pGdj8");
-// $result_token = curl_exec($curl_token);
-// $json = json_decode($result_token, true);
-// $access_token = $json['access_token'];
-// $token_type = $json['token_type'];
-// curl_close($curl_token);
+$curl_token = curl_init();
+curl_setopt($curl_token, CURLOPT_URL, $token_url);
+curl_setopt($curl_token, CURLOPT_POST, 1);
+curl_setopt($curl_token, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl_token, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($curl_token, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($curl_token, CURLOPT_POSTFIELDS,
+            "client_id=R1COQ57r0_UddN-80_NLFt89BHEFeX7cTXmwVG2tdiT06OyXbOqgukHFpt3xfxOm-tpo5Y6JKN431cJTLTE6Zw==&client_secret=9K_q_9Q2GHMAbyNdcof10gRcszQGZcpOfzv62cEwJ_Pqpd-_GsP_53Qy-hi6k1x-3RJohmyoMwOOZ0mR9Hh6KYmU695pGdj8");
+$result_token = curl_exec($curl_token);
+$json = json_decode($result_token, true);
+$access_token = $json['access_token'];
+$token_type = $json['token_type'];
+curl_close($curl_token);
 
 $url="";
 if($lat!="" && $lng!="")
