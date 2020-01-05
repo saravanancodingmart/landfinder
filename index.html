@@ -166,12 +166,15 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 11");
+                            console.log("test 12");
                             $.ajax({
                                 type: "GET",
-                                dataType: 'jsonp',
                                 url: "https://land-finder.herokuapp.com/",
                                 async: false,
+                                headers: {
+                                    'Access-Control-Allow-Origin':'*',
+                                    'Access-Control-Allow-Methods':'*',
+                                },
                                 data: {
                                     query: JSON.stringify(keyword),
                                     current_lat: JSON.stringify(lat),
