@@ -1,11 +1,8 @@
 <?php
 error_reporting(0);
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
 $keyword = json_decode($_POST['query']);
 $lat = json_decode($_POST['current_lat']);
-$lng = json_decode($_POST['current_lng']);
+$lng = json_decode($_POST['current_lng']);  
 
 $token_url = "https://outpost.mapmyindia.com/api/security/oauth/token?grant_type=client_credentials";
 
@@ -35,6 +32,9 @@ $header = array();
 $header[] = 'Content-length: 0';
 $header[] = 'Content-type: application/json';
 $header[] = 'Authorization: bearer edb5769d-dc87-4045-9ffb-d07dca24dc7a';
+$header[] = 'Access-Control-Allow-Origin: *';
+$header[] = 'Access-Control-Allow-Methods: GET, POST';
+$header[] = 'Access-Control-Allow-Headers: X-Requested-With';
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
