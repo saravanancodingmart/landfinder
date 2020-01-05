@@ -169,13 +169,14 @@
                             console.log("test 7");
                             $.ajax({
                                 type: "GET",
-                                url: "https://atlas.mapmyindia.com/api/places/nearby/json",
-                                dataType: "json",
-                                data: 'keywords='+JSON.stringify(keyword).replace(" ","%20").replace(/\"/g, "")+'&refLocation='+JSON.stringify(lat).replace(/\"/g, "")+','+JSON.stringify(lng).replace(/\"/g, ""),                           
-                                beforeSend: function (xhr) {
-                                    // xhr.withCredentials = true;
-                                    xhr.setRequestHeader("Authorization", "bearer 79c9f6ed-5b05-40e2-a815-52bf2ccd4eb2");                                    
-                                },
+                                dataType: 'json',
+                                url: "localhost:8000",
+                                async: false,
+                                data: {
+                                    query: JSON.stringify(keyword),
+                                    current_lat: JSON.stringify(lat),
+                                    current_lng: JSON.stringify(lng)
+                                },                        
                                 success: function (result) {
                                     console.log(result);
                                     var resdata = JSON.parse(result);
