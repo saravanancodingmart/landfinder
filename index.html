@@ -165,7 +165,7 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 3")
+                            console.log("test 4")
                             $.ajax({
                                 type: "GET",
                                 url: "https://atlas.mapmyindia.com/api/places/nearby/json",
@@ -174,9 +174,8 @@
                                 dataType: "text",
                                 contentType : "text/plain",
                                 data: 'keywords='+JSON.stringify(keyword).replace(" ","%20").replace(/\"/g, "")+'&refLocation='+JSON.stringify(lat).replace(/\"/g, "")+','+JSON.stringify(lng).replace(/\"/g, ""),
-                                headers: {
-                                    "Authorization": "bearer 79c9f6ed-5b05-40e2-a815-52bf2ccd4eb2",
-
+                                beforeSend: function (xhr) {
+                                    xhr.setRequestHeader("Authorization", "bearer 79c9f6ed-5b05-40e2-a815-52bf2ccd4eb2");
                                 },
                                 success: function (result) {
                                     console.log(result);
