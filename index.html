@@ -74,7 +74,10 @@
                         border-bottom: 1px solid #e9e9e9;
                     }
                     .popup-tab{
-                        width:350px;padding:10px;font-size: 10px;font-type: bold;
+                        width:350px;
+                        padding:10px;
+                        font-size: 10px;
+                        font-weight: bold;
                     }
                 </style>
                 </head>
@@ -162,18 +165,16 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 1")
+                            console.log("test 2")
                             $.ajax({
                                 type: "GET",
                                 url: "https://atlas.mapmyindia.com/api/places/nearby/json",
                                 async: false,
                                 crossDomain: true,
-                                dataType: "json",
-                                jsonp: false,
+                                dataType: "text",
                                 data: 'keywords='+keyword.replace(" ","%20").replace(/\"/g, "")+'&refLocation='+lat.replace(/\"/g, "")+','+lng.replace(/\"/g, ""),
                                 headers: {
-                                    "Authorization": "bearer 79c9f6ed-5b05-40e2-a815-52bf2ccd4eb2",
-                                    "Access-Control-Allow-Origin": "*"
+                                    "Authorization": "bearer 79c9f6ed-5b05-40e2-a815-52bf2ccd4eb2"
                                 },
                                 success: function (result) {
                                     console.log(result);
