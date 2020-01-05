@@ -168,7 +168,7 @@
                             console.log("test 7");
                             $.ajax({
                                 type: "GET",
-                                url: "https://atlas.mapmyindia.com/api/places/nearby/json?keywords",
+                                url: "https://atlas.mapmyindia.com/api/places/nearby/json",
                                 dataType: "json",
                                 data: 'keywords='+JSON.stringify(keyword).replace(" ","%20").replace(/\"/g, "")+'&refLocation='+JSON.stringify(lat).replace(/\"/g, "")+','+JSON.stringify(lng).replace(/\"/g, ""),                           
                                 beforeSend: function (xhr) {
