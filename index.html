@@ -162,10 +162,9 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 0")
+                            console.log("test 1")
                             $.ajax({
                                 type: "GET",
-                                dataType: 'text',
                                 url: "https://atlas.mapmyindia.com/api/places/nearby/json",
                                 async: false,
                                 crossDomain: true,
