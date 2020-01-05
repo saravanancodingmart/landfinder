@@ -45,7 +45,7 @@ curl_setopt($curl, CURLOPT_VERBOSE, 1);
 curl_setopt($curl, CURLOPT_HEADER, 1);
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-console_log("Curl: ",$curl);
+echo($curl);
 $result = curl_exec($curl);
 $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
