@@ -162,7 +162,6 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log('keywords='+JSON.stringify(keyword).replace(" ","%20").replace(/\"/g, "")+'&refLocation='+JSON.stringify(lat).replace(/\"/g, "")+','+JSON.stringify(lng).replace(/\"/g, ""))
                             $.ajax({
                                 type: "GET",
                                 dataType: 'text',
