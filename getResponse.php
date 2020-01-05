@@ -33,7 +33,7 @@ $header[] = 'Content-length: 0';
 $header[] = 'Content-type: application/json';
 $header[] = 'Authorization: bearer edb5769d-dc87-4045-9ffb-d07dca24dc7a';
 $header[] = 'Access-Control-Allow-Origin: *';
-$header[] = 'Access-Control-Allow-Methods: GET, POST';
+$header[] = 'Access-Control-Allow-Methods: *';
 $header[] = 'Access-Control-Allow-Headers: X-Requested-With';
 
 $curl = curl_init();
@@ -45,6 +45,7 @@ curl_setopt($curl, CURLOPT_VERBOSE, 1);
 curl_setopt($curl, CURLOPT_HEADER, 1);
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
 curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+console_log("Curl: ",$curl);
 $result = curl_exec($curl);
 $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
