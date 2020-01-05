@@ -34,7 +34,7 @@ $header[] = 'Content-type: application/json';
 $header[] = 'Authorization: bearer edb5769d-dc87-4045-9ffb-d07dca24dc7a';
 $header[] = 'Access-Control-Allow-Origin: *';
 $header[] = 'Access-Control-Allow-Methods: *';
-$header[] = 'Access-Control-Allow-Headers: X-Requested-With';
+$header[] = 'Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With';
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
