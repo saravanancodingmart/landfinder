@@ -1,6 +1,7 @@
 var express = require('express')
 const request = require('request');
 var app = express()
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
 
@@ -24,6 +25,6 @@ app.get('/', (req, res) => {
     request(options, callback);
 })
 
-const server = app.listen(8000, () => {
+const server = app.listen(port, () => {
     console.log('Listening on port %s', server.address().port)
 });
