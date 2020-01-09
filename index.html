@@ -165,7 +165,7 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 19");
+                            console.log("test 20");
                             $.ajax({
                                 type: "GET",
                                 url: "https://land-finder.herokuapp.com/",
@@ -180,9 +180,9 @@
                                     var resdata = JSON.parse(result);
                                     var jsondata;
                                     console.log(resdata);
-                                    if (resdata.status == 'success') {
+                                    if (resdata.statusCode == 200) {
                                         try {
-                                            jsondata = JSON.parse(resdata.data);
+                                            jsondata = JSON.parse(resdata.body);
                                         } catch (e) {
                                             var error_response = "No Result"
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';
@@ -199,7 +199,7 @@
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';/***put response result in div****/
                                         }
                                     } else {
-                                        var error_message = resdata.data;
+                                        var error_message = resdata.body;
                                         document.getElementById('result').innerHTML = error_message + '</ul></div>';/***put response result in div****/
                                         remove_markers();
                                     }
