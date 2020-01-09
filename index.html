@@ -177,9 +177,9 @@
                                     "Access-Control-Allow-Methods": "*"
                                 },
                                 data: {
-                                    query: JSON.stringify(keyword),
-                                    current_lat: JSON.stringify(lat),
-                                    current_lng: JSON.stringify(lng)
+                                    query: keyword,
+                                    current_lat: lat,
+                                    current_lng: lng
                                 },                        
                                 success: function (result) {
                                     console.log("***********Result**********:",result);
