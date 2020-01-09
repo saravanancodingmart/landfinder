@@ -161,7 +161,6 @@
                                     getUrlResult(keyword.value, lat, lng);   
                                 }
                         }
-                        var spl_url = 'https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee&refLocation=12.927162532132044,77.69798034515283'
                         /*function to get json response from the url*/
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
@@ -197,7 +196,9 @@
                                             var error_response = "No Result"
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';/***put response result in div****/
                                         }
-                                    } else {
+                                    } 
+                                    else {
+                                        console.log("error", data)
                                         var error_message = resdata.data;
                                         document.getElementById('result').innerHTML = error_message + '</ul></div>';/***put response result in div****/
                                         remove_markers();
@@ -207,6 +208,7 @@
                         }
                         /*function to display geocode result*/
                         function display_near_by_result(data) {
+                            console.log("display near by result", data)
                             details = [];
                             remove_markers();/***********remove existing marker from map**/
                             var result_string = '<div style="padding: 0 12px;color:green;font-size:13px">POI</div><div style="font-size: 13px">\n\
