@@ -1,9 +1,10 @@
 var express = require('express')
 const request = require('request');
-var app = express()
+var app = express();
+const cors = require('cors');
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
   const { query, current_lat, current_lng } = req.query;
   const optionsPost = {
     url:'https://outpost.mapmyindia.com/api/security/oauth/token', 
