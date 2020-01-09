@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
       client_id: 'R1COQ57r0_UddN-80_NLFt89BHEFeX7cTXmwVG2tdiT06OyXbOqgukHFpt3xfxOm-tpo5Y6JKN431cJTLTE6Zw==',
       client_secret: '9K_q_9Q2GHMAbyNdcof10gRcszQGZcpOfzv62cEwJ_Pqpd-_GsP_53Qy-hi6k1x-3RJohmyoMwOOZ0mR9Hh6KYmU695pGdj8'
     }
-  } 
+  }
   request.post( optionsPost, function postCallback(error, response, body) {
     if (!error && response.statusCode == 200) {
       const { access_token, token_type } = JSON.parse(body);
@@ -34,16 +34,15 @@ app.get('/', (req, res) => {
       };
       request(optionsGet,  function getCallback(error, response, body) {
         if (!error && response.statusCode == 200) {
-          const info = JSON.parse(body);
-          res.send(info)
+          res.send(response)
         }
         else {
-          console.log(error);
+          res.sendStatus(500).json(error)
         }
       });
     }
     else {
-      console.log(error);
+      res.sendStatus(500).json(error)
     }
   });
 })

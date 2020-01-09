@@ -165,7 +165,7 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 18");
+                            console.log("test 19");
                             $.ajax({
                                 type: "GET",
                                 url: "https://land-finder.herokuapp.com/",
@@ -176,17 +176,19 @@
                                     current_lng: lng
                                 },                        
                                 success: function (result) {
-                                    var resdata = result;
+                                    console.log("***********Result**********:",result);
+                                    var resdata = JSON.parse(result);
                                     var jsondata;
+                                    console.log(resdata);
                                     if (resdata.status == 'success') {
                                         try {
-                                            jsondata = resdata;
+                                            jsondata = JSON.parse(resdata.data);
                                         } catch (e) {
                                             var error_response = "No Result"
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';
                                             return false;
                                         }
-                                        
+
                                         if (jsondata.suggestedLocations.length > 0) {
                                             /*success*/
                                             display_near_by_result(jsondata.suggestedLocations);/*display results on success*/
@@ -196,9 +198,7 @@
                                             var error_response = "No Result"
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';/***put response result in div****/
                                         }
-                                    } 
-                                    else {
-                                        console.log("error", data)
+                                    } else {
                                         var error_message = resdata.data;
                                         document.getElementById('result').innerHTML = error_message + '</ul></div>';/***put response result in div****/
                                         remove_markers();
@@ -208,7 +208,6 @@
                         }
                         /*function to display geocode result*/
                         function display_near_by_result(data) {
-                            console.log("display near by result", data)
                             details = [];
                             remove_markers();/***********remove existing marker from map**/
                             var result_string = '<div style="padding: 0 12px;color:green;font-size:13px">POI</div><div style="font-size: 13px">\n\
