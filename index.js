@@ -1,10 +1,15 @@
 var express = require('express')
 const request = require('request');
 var app = express();
-const cors = require('cors');
 const port = process.env.PORT || 3000
 
-app.get('/', cors(), (req, res) => {
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/', (req, res) => {
   const { query, current_lat, current_lng } = req.query;
   const optionsPost = {
     url:'https://outpost.mapmyindia.com/api/security/oauth/token', 
