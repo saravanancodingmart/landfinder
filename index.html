@@ -169,13 +169,8 @@
                             console.log("test 14");
                             $.ajax({
                                 type: "GET",
-                                url: "https://land-finder.herokuapp.com/",
+                                url: "http://localhost:3000/",
                                 async: false,
-                                headers: {
-                                    "Access-Control-Allow-Origin": "*",
-                                    "Access-Control-Allow-Credentials": true,
-                                    "Access-Control-Allow-Methods": "*"
-                                },
                                 data: {
                                     query: keyword,
                                     current_lat: lat,
