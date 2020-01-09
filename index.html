@@ -177,12 +177,12 @@
                                 },                        
                                 success: function (result) {
                                     console.log("***********Result**********:",result);
-                                    var resdata = JSON.parse(result);
+                                    var resdata = result;
                                     var jsondata;
                                     console.log(resdata);
                                     if (resdata.statusCode == 200) {
                                         try {
-                                            jsondata = JSON.parse(resdata.body);
+                                            jsondata = resdata.data;
                                         } catch (e) {
                                             var error_response = "No Result"
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';
@@ -199,7 +199,7 @@
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';/***put response result in div****/
                                         }
                                     } else {
-                                        var error_message = resdata.body;
+                                        var error_message = resdata.message;
                                         document.getElementById('result').innerHTML = error_message + '</ul></div>';/***put response result in div****/
                                         remove_markers();
                                     }

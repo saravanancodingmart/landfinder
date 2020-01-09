@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
       };
       request(optionsGet,  function getCallback(error, response, body) {
         if (!error && response.statusCode == 200) {
-          res.send(response)
+          const info = JSON.parse(body);
+          res.send({ statusCode: 200, data: info })
         }
         else {
           res.sendStatus(500).json(error)
