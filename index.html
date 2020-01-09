@@ -166,7 +166,7 @@
                         function getUrlResult(keyword, lat, lng) {
                             remove_btn();
                             add_btn(lat, lng);
-                            console.log("test 16");
+                            console.log("test 17");
                             $.ajax({
                                 type: "GET",
                                 url: "https://land-finder.herokuapp.com/",
@@ -177,8 +177,7 @@
                                     current_lng: lng
                                 },                        
                                 success: function (result) {
-                                    console.log("***********Result**********:",result);
-                                    var resdata = JSON.parse(result);
+                                    var resdata = result;
                                     var jsondata;
                                     if (resdata.status == 'success') {
                                         try {
@@ -188,7 +187,7 @@
                                             document.getElementById('result').innerHTML = error_response + '</ul></div>';
                                             return false;
                                         }
-
+                                        
                                         if (jsondata.suggestedLocations.length > 0) {
                                             /*success*/
                                             display_near_by_result(jsondata.suggestedLocations);/*display results on success*/
